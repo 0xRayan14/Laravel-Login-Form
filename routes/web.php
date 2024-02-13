@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BlogController::class, 'index'])->name('blog.index');
 
 
-Route::get('/inscription',[\App\Http\Controllers\Auth\AuthController::class, 'showRegister'])->name('auth.register');
+Route::get('/inscription',[\App\Http\Controllers\Auth\AuthController::class, 'showRegister'])->name('auth.register')->middleware('guest');
 Route::post('/inscription',[\App\Http\Controllers\Auth\AuthController::class, 'register']);
 
-Route::get('/connexion',[\App\Http\Controllers\Auth\AuthController::class, 'showLogin'])->name('auth.login');
+Route::get('/connexion',[\App\Http\Controllers\Auth\AuthController::class, 'showLogin'])->name('auth.login')->middleware('guest');
 Route::post('/connexion',[\App\Http\Controllers\Auth\AuthController::class, 'login']);
+
+Route::delete('/deconnexion', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('auth.logout');

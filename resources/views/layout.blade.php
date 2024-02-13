@@ -22,6 +22,14 @@
                         <a class="nav-link" href="{{route('auth.register')}}">S'enregistrer</a>
                         <a class="nav-link" href="{{route('auth.login')}}">Connexion</a>
                     @endguest
+
+                    @auth()
+                        <form action="{{route('auth.logout')}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-primary">Se déconnecter</button>
+                        </form>
+                    @endauth
                 </div>
             </div>
 

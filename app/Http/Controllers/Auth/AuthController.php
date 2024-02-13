@@ -36,4 +36,12 @@ class AuthController extends Controller
             session()->regenerate();
         }
         return redirect()->route('blog.index')->with('ok', 'Connexion validée');
-    }}
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('blog.index')->with('ok', 'Deconnexion validée');
+    }
+}
+
