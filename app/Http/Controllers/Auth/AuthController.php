@@ -20,7 +20,7 @@ class AuthController extends Controller
     {
         User::query()->create($request->validated());
 
-        return redirect()->route('auth.login')->with('ok', 'Inscription validée');
+        return redirect()->route('auth.login')->with('ok', 'Successfully registered');
     }
 
 
@@ -34,14 +34,16 @@ class AuthController extends Controller
         $registered = Auth::attempt($request->validated());
         if($registered){
             session()->regenerate();
+            return redirect()->route('blog.index')->with('ok', 'Successfully loged');
+        } else {
+            return redirect()->route('blog.index')->with('ok', 'Email or password is incorrect');
         }
-        return redirect()->route('blog.index')->with('ok', 'Connexion validée');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('blog.index')->with('ok', 'Deconnexion validée');
+        return redirect()->route('blog.index')->with('ok', 'Successfully loged out');
     }
 }
 

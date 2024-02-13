@@ -19,22 +19,30 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                     @guest()
-                        <a class="nav-link" href="{{route('auth.register')}}">S'enregistrer</a>
-                        <a class="nav-link" href="{{route('auth.login')}}">Connexion</a>
+                        <a class="nav-link" href="{{route('auth.register')}}">Register</a>
+                        <a class="nav-link" href="{{route('auth.login')}}">Login</a>
                     @endguest
 
                     @auth()
                         <form action="{{route('auth.logout')}}" method="post">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-primary">Se déconnecter</button>
+                            <button class="nav-link">Logout</button>
                         </form>
+                        <a href="{{route('post.create')}}" class="btn btn-warning">Créer</a>
+
                     @endauth
                 </div>
             </div>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
 
         </div>
     </nav>
+
+
 
     @if(session('ok'))
         <x-flash>{{session('ok')}}</x-flash>

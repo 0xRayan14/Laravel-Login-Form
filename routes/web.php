@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/publication/create', [BlogController::class, 'create'])->name('post.create')->middleware('auth');
 
 
 Route::get('/inscription',[\App\Http\Controllers\Auth\AuthController::class, 'showRegister'])->name('auth.register')->middleware('guest');
@@ -23,4 +24,5 @@ Route::post('/inscription',[\App\Http\Controllers\Auth\AuthController::class, 'r
 Route::get('/connexion',[\App\Http\Controllers\Auth\AuthController::class, 'showLogin'])->name('auth.login')->middleware('guest');
 Route::post('/connexion',[\App\Http\Controllers\Auth\AuthController::class, 'login']);
 
-Route::delete('/deconnexion', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('auth.logout');
+Route::delete('/deconnexion', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
+
