@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [BlogController::class, 'index']);
+Route::get('/', [BlogController::class, 'index'])->name('blog.index');
 
 
 Route::get('/inscription',[\App\Http\Controllers\Auth\AuthController::class, 'showRegister'])->name('auth.register');

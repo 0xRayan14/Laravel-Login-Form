@@ -7,15 +7,35 @@
         <title>@yield('title')</title>
     </head>
     <body data-bs-theme="dark">
-    <nav class="navbar bg-body-tertiary">
+
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Accueil</a>
-            <div>
-                <a href="{{route('auth.register')}}" class="btn btn-info">Inscription</a>
-                <a href="{{route('auth.login')}}" class="btn btn-info">Connexion</a>
+            <a class="navbar-brand" href="#">TrekBlog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    @guest()
+                        <a class="nav-link" href="{{route('auth.register')}}">S'enregistrer</a>
+                        <a class="nav-link" href="{{route('auth.login')}}">Connexion</a>
+                    @endguest
+                </div>
             </div>
+
         </div>
     </nav>
+
+    @if(session('ok'))
+        <x-flash>{{session('ok')}}</x-flash>
+    @endif
+
+    @if(session('ko'))
+    <x-flash>{{session('ko')}}</x-flash>
+    @endif
+
     @yield('body')
 
     </body>

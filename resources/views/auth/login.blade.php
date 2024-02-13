@@ -7,9 +7,9 @@
 
         <form class="w-75 mx-auto my-5 " action="" method="post">
             @csrf
-            <x-input name="email" label="Email" type="email"></x-input>
-            <x-input name="password" label="Mot de passe" type="password"></x-input>
-            <button class="btn btn-info">Se connecter</button>
+            <x-input name="email" label="Email" type="email" value="{{old('email')}}"></x-input>
+            <x-input name="password" label="Mot de passe" type="password" value="{{old('password')}}"></x-input>
+            <button class="btn btn-primary">Se connecter</button>
         </form>
     </div>
 @endsection

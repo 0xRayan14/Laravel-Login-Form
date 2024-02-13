@@ -11,7 +11,7 @@
             <x-input name="lastname" label="Nom" value="{{old('lastname')}}"></x-input>
             <x-input name="email" label="Email" type="email" value="{{old('email')}}"></x-input>
             <x-input name="password" label="Mot de passe" type="password" value="{{old('password')}}"></x-input>
-            <button class="btn btn-info">S'inscrire</button>
+            <button class="btn btn-primary">S'inscrire</button>
         </form>
     </div>
 @endsection
