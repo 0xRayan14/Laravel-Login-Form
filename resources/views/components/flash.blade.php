@@ -1,5 +1,5 @@
 <?php
-$class="alert alert-info"
+$class="alert alert-success"
 ?>
 
 <div class="{{$class}}">

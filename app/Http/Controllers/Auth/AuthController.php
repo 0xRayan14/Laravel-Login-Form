@@ -35,9 +35,9 @@ class AuthController extends Controller
         if($registered){
             session()->regenerate();
             return redirect()->route('blog.index')->with('ok', 'Successfully loged');
-        } else {
-            return redirect()->route('blog.index')->with('ok', 'Email or password is incorrect');
         }
+
+        return redirect()->route('blog.index')->with('ok', 'Email or password is incorrect');
     }
 
     public function logout()

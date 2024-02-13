@@ -29,7 +29,7 @@
                             @method('delete')
                             <button class="nav-link">Logout</button>
                         </form>
-                        <a href="{{route('post.create')}}" class="btn btn-warning">Créer</a>
+                        <a href="{{route('post.create')}}" class="btn btn-warning">Create</a>
 
                     @endauth
                 </div>
