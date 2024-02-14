@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\createPostRequest;
+use App\Http\Requests\UpdatePost;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -34,6 +35,23 @@ class BlogController extends Controller
         Storage::disk('public')->delete($post->image);
         $post->delete();
         return redirect()->route('blog.index')->with('ok', 'Article deleted');
+    }
+
+    public function edit(Post $post)
+    {
+        return view('blog.edit', compact('post'));
+
+    }
+
+    public function update(UpdatePost $request, Post $post)
+    {
+        if($request->file('image')) {
+            return "yes";
+        }
+
+        $post->update($request->validated());
+        return redirect()->route('blog.index')->with('ok', 'Article modified');
+
     }
 
 

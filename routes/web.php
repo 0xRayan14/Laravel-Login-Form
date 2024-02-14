@@ -21,7 +21,7 @@ Route::post('/publication/create', [BlogController::class, 'store'])->middleware
 Route::get('/publication/{post}', [BlogController::class, 'show'])->name('post.show');
 Route::delete('/publication/{post}/delete', [BlogController::class, 'destroy'])->middleware('auth')->name('post.delete');
 Route::get('/publication/{post}/modify', [BlogController::class, 'edit'])->middleware('auth')->name('post.edit');
-Route::put('/publication/{post}/modify', [BlogController::class, 'update'])->middleware('auth');
+Route::put('/publication/{post}/modify', [BlogController::class, 'update'])->middleware('auth')->name('post.update');
 
 
 

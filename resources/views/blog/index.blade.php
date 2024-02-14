@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', "TrekBlog")
+@section('title', "TrekBlog - Home")
 
 @section('body')
     <div class="container">
@@ -12,12 +12,12 @@
                            Autor : {{$post->user->firstname}}  {{$post->user->lastname}}
                        </div>
                        <div class="card-body">
-                           <h4>{{$post->title}}</h4>                           <p>Posted the {{$post->created_at}}</p>
-                           <p>{{$post->content}}</p>
+                           <h1>{{$post->title}}</h1>                           <p>Posted the {{$post->created_at}}</p>
+                           <h4>{{$post->content}}</h4>
                            <img class="img-thumbnail img-fluid" src="/storage/{{$post->image}}" alt="{{$post->title}}">
                        </div>
                        <div class="card-footer d-flex align-items-center justify-content-between">
-                           <a class="btn btn-outline-light" href="{{route('post.show', $post)}}">Modify</a>
+                           <a class="btn btn-outline-light" href="{{route('post.show', $post)}}">See more</a>
                            <form action="{{route('post.delete', $post)}}" method="post">
                                @csrf
                                @method('delete')

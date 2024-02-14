@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', "Create a post")
+@section('title', "TrekBlog - Create")
 
 @section('body')
 <div class="container">
