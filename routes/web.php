@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/publication/create', [BlogController::class, 'create'])->name('post.create')->middleware('auth');
+Route::post('/publication/create', [BlogController::class, 'store'])->middleware('auth');
+
 
 
 Route::get('/inscription',[AuthController::class, 'showRegister'])->name('auth.register')->middleware('guest');
