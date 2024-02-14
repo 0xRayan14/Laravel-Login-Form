@@ -13,7 +13,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::query()->with('user')->get();
+        $posts = Post::query()->with('user')->orderBy('created_at', 'desc')->paginate(2);
         return view('blog.index', compact('posts'));
     }
 
@@ -21,6 +21,13 @@ class BlogController extends Controller
     {
         return view('blog.create');
     }
+
+    public function show(Post $post)
+    {
+        $post = $post->load('user');
+        return view('blog.show', compact('post'));
+    }
+
     public function store(createPostRequest $request)
     {
         $path = $request->file('image')->store('post', 'public');
