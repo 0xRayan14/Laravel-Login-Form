@@ -16,9 +16,13 @@
                            <p>{{$post->content}}</p>
                            <img class="img-thumbnail img-fluid" src="/storage/{{$post->image}}" alt="{{$post->title}}">
                        </div>
-                       <div class="card-footer">
-                           <a class="btn btn-outline-light" href="{{route('post.show', $post)}}">See more</a>
-                           <button class="btn btn-outline-danger" >Delete</button>
+                       <div class="card-footer d-flex align-items-center justify-content-between">
+                           <a class="btn btn-outline-light" href="{{route('post.show', $post)}}">Modify</a>
+                           <form action="{{route('post.delete', $post)}}" method="post">
+                               @csrf
+                               @method('delete')
+                               <button class="btn btn-outline-danger" >Delete</button>
+                           </form>
                        </div>
                    </div>
             @endforeach

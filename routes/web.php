@@ -19,6 +19,9 @@ Route::get('/', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/publication/create', [BlogController::class, 'create'])->name('post.create')->middleware('auth');
 Route::post('/publication/create', [BlogController::class, 'store'])->middleware('auth');
 Route::get('/publication/{post}', [BlogController::class, 'show'])->name('post.show');
+Route::delete('/publication/{post}/delete', [BlogController::class, 'destroy'])->middleware('auth')->name('post.delete');
+Route::get('/publication/{post}/modify', [BlogController::class, 'edit'])->middleware('auth')->name('post.edit');
+Route::put('/publication/{post}/modify', [BlogController::class, 'update'])->middleware('auth');
 
 
 

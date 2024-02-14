@@ -12,15 +12,17 @@
                     <div class="card-body">
                         <h4>{{$post->title}}</h4>                           <p>Posted the {{$post->created_at}}</p>
                         <p>{{$post->content}}</p>
-                        <img class="img-thumbnail" src="/storage/{{$post->image}}" alt="{{$post->title}}">
+                        <img class="img-thumbnail img-fluid" src="/storage/{{$post->image}}" alt="{{$post->title}}">
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="btn btn-outline-light" href="{{route('post.show', $post)}}">Modify</a>
-                        <form action="" method="post">
+                        <form action="{{route('post.delete', $post)}}" method="post">
                             @csrf
+                            @method('delete')
                             <button class="btn btn-outline-danger" >Delete</button>
                         </form>
                     </div>
                 </div>
     </div>
 @endsection
+

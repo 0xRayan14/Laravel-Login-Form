@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -27,6 +28,14 @@ class BlogController extends Controller
         $post = $post->load('user');
         return view('blog.show', compact('post'));
     }
+
+    public function destroy(Post $post)
+    {
+        Storage::disk('public')->delete($post->image);
+        $post->delete();
+        return redirect()->route('blog.index')->with('ok', 'Article deleted');
+    }
+
 
     public function store(createPostRequest $request)
     {
