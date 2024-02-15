@@ -51,8 +51,9 @@ class BlogController extends Controller
         if($request->file('image')) {
             Storage::disk('public')->delete($post->image);
             $path = $request->file('image')->store('post', 'public');
-            $post['image'] = $path;
-            $post->update($request->validated());
+            $updatedPost = $request->validated();
+            $updatedPost['image'] = $path;
+            $post->update($updatedPost);
             return redirect()->route('blog.index')->with('ok', 'Article modified');
 
         }
