@@ -10,8 +10,8 @@
             @csrf
             @method('put')
             <x-input name="title" label="Title" value="{{$post->title}}"></x-input>
-            <x-input name="content" label="Content" type="textarea" value="{{old('content')}}"></x-input>
-            <x-input name="image" label="Image" type="file" value="{{$post->content}}"></x-input>
+            <x-input name="content" label="Content" type="textarea">{{$post->content}}</x-input>
+            <x-input name="image" label="Image" type="file"/>
             <button class="btn btn-primary">Modify</button>
         </form>
     </div>

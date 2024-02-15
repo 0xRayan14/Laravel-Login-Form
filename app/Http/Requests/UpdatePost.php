@@ -25,7 +25,7 @@ class UpdatePost extends FormRequest
         return [
             'title' => ['required', 'min:3', 'max:45'],
             'content' => ['required', 'min:5', 'max:750'],
-            'image' => ['required', 'image']
+            'image' => ['nullable', 'image']
 
         ];
     }

@@ -14,6 +14,7 @@
                         <h4>{{$post->content}}</h4>
                         <img class="img-thumbnail img-fluid" src="/storage/{{$post->image}}" alt="{{$post->title}}">
                     </div>
+                    @can('update', $post)
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="btn btn-outline-light" href="{{route('post.edit', $post)}}">Modify</a>
                         <form action="{{route('post.delete', $post)}}" method="post">
@@ -22,6 +23,7 @@
                             <button class="btn btn-outline-danger" >Delete</button>
                         </form>
                     </div>
+                    @endcan
                 </div>
     </div>
 @endsection

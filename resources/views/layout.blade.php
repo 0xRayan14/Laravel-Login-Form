@@ -24,7 +24,7 @@
                     @endguest
 
                     @auth()
-                        <a href="{{route('post.create')}}" class="btn btn active">Create</a>
+                        <a href="{{route('post.create')}}" class="btn btn-outline-light">Create</a>
 
                         <form action="{{route('auth.logout')}}" method="post">
                             @csrf
@@ -42,9 +42,6 @@
 
         </div>
     </nav>
-
-
-
     @if(session('ok'))
         <x-flash>{{session('ok')}}</x-flash>
     @endif

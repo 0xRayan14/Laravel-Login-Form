@@ -32,6 +32,7 @@ class BlogController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         Storage::disk('public')->delete($post->image);
         $post->delete();
         return redirect()->route('blog.index')->with('ok', 'Article deleted');
@@ -39,14 +40,21 @@ class BlogController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
         return view('blog.edit', compact('post'));
 
     }
 
     public function update(UpdatePost $request, Post $post)
     {
+        $this->authorize('update', $post);
         if($request->file('image')) {
-            return "yes";
+            Storage::disk('public')->delete($post->image);
+            $path = $request->file('image')->store('post', 'public');
+            $post['image'] = $path;
+            $post->update($request->validated());
+            return redirect()->route('blog.index')->with('ok', 'Article modified');
+
         }
 
         $post->update($request->validated());
