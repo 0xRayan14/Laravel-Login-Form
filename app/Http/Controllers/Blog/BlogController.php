@@ -73,4 +73,29 @@ class BlogController extends Controller
         Post::query()->create($post);
         return redirect()->route('blog.index')->with('ok', 'Article added');
     }
+
+    public function search(Request $request)
+    {
+        // Validate the search query
+        $request->validate([
+            'query' => 'required|string|min:3',
+        ]);
+
+
+        // Get the search query from the request
+        $query = $request->input('query');
+
+        // Perform the search on posts with titles exactly matching the query
+        $posts = Post::query()
+            ->where('title', $query)
+            ->with('user')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10); // You can adjust the pagination as needed
+
+        // Return the search results to the view
+        return view('blog.search', compact('posts', 'query'));
+    }
+
+
+
 }

@@ -23,7 +23,7 @@ Route::delete('/publication/{post}/delete', [BlogController::class, 'destroy'])-
 Route::get('/publication/{post}/modify', [BlogController::class, 'edit'])->middleware('auth')->name('post.edit');
 Route::put('/publication/{post}/modify', [BlogController::class, 'update'])->middleware('auth')->name('post.update');
 
-
+Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
 
 Route::get('/inscription',[AuthController::class, 'showRegister'])->name('auth.register')->middleware('guest');
 Route::post('/inscription',[AuthController::class, 'register']);
