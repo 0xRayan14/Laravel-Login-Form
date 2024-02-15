@@ -81,18 +81,14 @@ class BlogController extends Controller
             'query' => 'required|string|min:3',
         ]);
 
-
-        // Get the search query from the request
         $query = $request->input('query');
 
-        // Perform the search on posts with titles exactly matching the query
         $posts = Post::query()
-            ->where('title', $query)
+            ->where('title', 'like', "%{$query}%")
             ->with('user')
             ->orderBy('created_at', 'desc')
-            ->paginate(10); // You can adjust the pagination as needed
+            ->paginate(10);
 
-        // Return the search results to the view
         return view('blog.search', compact('posts', 'query'));
     }
 

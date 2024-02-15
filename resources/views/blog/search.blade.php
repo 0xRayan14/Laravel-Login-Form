@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', "TrekBlog - Show")
+@section('title', "TrekBlog - Search")
 
 @section('body')
     <div class="container">
@@ -31,7 +31,7 @@
                     @endcan
                 </div>
             @endforeach
-            {{ $posts->links() }} <!-- Pagination links -->
+            {{ $posts->links() }}
         @endif
     </div>
 @endsection
