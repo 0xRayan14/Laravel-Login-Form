@@ -78,7 +78,7 @@ class BlogController extends Controller
     {
         // Validate the search query
         $request->validate([
-            'query' => 'required|string|min:3',
+            'query' => 'required|string',
         ]);
 
         $query = $request->input('query');
