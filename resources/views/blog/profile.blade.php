@@ -11,34 +11,23 @@
                     <div class="card-header">Edit Profile</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('blog.profile') }}">
+                        <form action="{{ route('profile.update') }}" method="POST">
                             @csrf
                             @method('PUT')
 
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Pseudo</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-                                </div>
+                            <div class="form-group">
+                                <label for="firstname">First Name</label>
+                                <input type="text" class="form-control" id="firstname" name="firstname" value="{{ Auth::user()->firstname }}">
                             </div>
 
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-                                </div>
+                            <div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" class="form-control" id="lastname" name="lastname" value="{{ Auth::user()->lastname }}">
                             </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Update Profile
-                                    </button>
-                                </div>
-                            </div>
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
                         </form>
+
                     </div>
                 </div>
             </div>

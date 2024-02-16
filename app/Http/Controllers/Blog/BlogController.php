@@ -91,10 +91,30 @@ class BlogController extends Controller
         return view('blog.search', compact('posts', 'query'));
     }
 
-    public function profile(Post $post)
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($user) {
+            $request->validate([
+                'firstname' => 'required|string|max:255',
+                'lastname' => 'required|string|max:255',
+            ]);
+
+            $user->firstname = $request->input('firstname');
+            $user->lastname = $request->input('lastname');
+            $user->save();
+
+            return redirect()->back()->with('success', 'Profile updated successfully.');
+        } else {
+            // Handle the case where the user object is not available
+            return redirect()->back()->with('error', 'Failed to update profile. Please try again.');
+        }
+    }
+
+    public function editProfile()
     {
         return view('blog.profile');
-
     }
 
 
