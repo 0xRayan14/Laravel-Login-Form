@@ -32,8 +32,6 @@
                             <button class="nav-link">Logout</button>
                         </form>
 
-
-
                     @endauth
                 </div>
             </div>
@@ -46,6 +44,7 @@
                 <a href="{{route('blog.profile')}}" class="btn btn-outline-info">Profile</a>
                 @endauth
             </div>
+
 
         </div>
     </nav>
