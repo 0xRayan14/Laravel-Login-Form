@@ -17,6 +17,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
+                    @auth()
+                        <a href="{{ route('blog.profile') }}">
+                            <img src="{{ asset('images/' . Auth::user()->image) }}" alt="Profile Picture" class="rounded-circle me-2" style="width: 40px; height: 40px;">
+                        </a>
+                    @endauth
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                     @guest()
                         <a class="nav-link" href="{{route('auth.register')}}">Register</a>
@@ -24,16 +29,13 @@
                     @endguest
 
                     @auth()
-                        <div class="d-flex align-items-center">
-                            <div class="d-flex align-items-center">
-                                <a href="{{ route('blog.profile') }}">
-                                    <img src="{{ asset('images/' . Auth::user()->image) }}" alt="Profile Picture" class="rounded-circle me-2" style="width: 32px; height: 32px;">
-                                </a>
-                            </div>
-                            <!-- Profile link -->
+                        <div class="flex justify-between">
+                            <a href="{{route('post.create')}}" class="nav-link active">New post</a>
+
                         </div>
 
-                        <!-- Logout form -->
+
+
                         <form action="{{ route('auth.logout') }}" method="post">
                             @csrf
                             @method('delete')
