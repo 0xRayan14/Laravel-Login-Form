@@ -33,5 +33,7 @@ Route::post('/login',[AuthController::class, 'login']);
 
 Route::delete('/', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
 
-Route::get('/profile',[BlogController::class, 'profile'])->name('blog.profile')->middleware('auth');
-Route::post('/profile',[BlogController::class, 'profile']);
+Route::get('/profile', [BlogController::class, 'profile'])->name('blog.profile')->middleware('auth');
+Route::get('/profile', [BlogController::class, 'editProfile'])->name('blog.profile')->middleware('auth');
+Route::put('/profile/update', [BlogController::class, 'updateProfile'])->name('profile.update');
+
