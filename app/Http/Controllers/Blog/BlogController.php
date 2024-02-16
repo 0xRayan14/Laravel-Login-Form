@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\createPostRequest;
 use App\Http\Requests\UpdatePost;
+use App\Http\Requests\UpdateProfile;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -91,7 +92,7 @@ class BlogController extends Controller
         return view('blog.search', compact('posts', 'query'));
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(UpdateProfile $request)
     {
         $user = Auth::user();
 
@@ -99,7 +100,16 @@ class BlogController extends Controller
             $request->validate([
                 'firstname' => 'required|string|max:255',
                 'lastname' => 'required|string|max:255',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
+
+            // Handle image upload
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = time().'.'.$image->extension();
+                $image->move(public_path('images'), $imageName);
+                $user->image = $imageName;
+            }
 
             $user->firstname = $request->input('firstname');
             $user->lastname = $request->input('lastname');
@@ -107,15 +117,17 @@ class BlogController extends Controller
 
             return redirect()->back()->with('success', 'Profile updated successfully.');
         } else {
-            // Handle the case where the user object is not available
             return redirect()->back()->with('error', 'Failed to update profile. Please try again.');
         }
     }
 
+
     public function editProfile()
     {
         return view('blog.profile');
+
     }
+
 
 
 
