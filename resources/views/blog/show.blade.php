@@ -6,7 +6,9 @@
     <div class="container">
         <h1 class="text-center">Details of the article</h1>
         <div class="flex justify-center card">
+
             <div class="card-header">
+                <a href="/" class="btn btn-close btn-close" aria-label="Close"></a>
                 Autor : {{$post->user->firstname}}  {{$post->user->lastname}}
             </div>
             <div class="card-body">
