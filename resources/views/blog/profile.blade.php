@@ -11,7 +11,7 @@
                     <div class="card-header">Edit Profile</div>
 
                     <div class="card-body">
-                        <form action="{{ route('profile.update') }}" method="POST">
+                        <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -24,6 +24,9 @@
                                 <label for="lastname">Last Name</label>
                                 <input type="text" class="form-control" id="lastname" name="lastname" value="{{ Auth::user()->lastname }}">
                             </div>
+
+                            <x-input name="image" label="Image" type="file"></x-input>
+
 
                             <button type="submit" class="btn btn-primary">Update Profile</button>
                         </form>

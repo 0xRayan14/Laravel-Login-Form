@@ -24,14 +24,17 @@
                     @endguest
 
                     @auth()
-                        <a href="{{route('post.create')}}" class="btn btn-outline-light">Create</a>
+                        <div class="d-flex align-items-center">
+                            <a href="{{ route('blog.profile') }}">
+                                <img src="{{ asset('images/' . Auth::user()->image) }}" alt="Profile Picture" class="rounded-circle me-2" style="width: 32px; height: 32px;">
+                            </a>
+                        </div>
 
-                        <form action="{{route('auth.logout')}}" method="post">
+                        <form action="{{ route('auth.logout') }}" method="post">
                             @csrf
                             @method('delete')
                             <button class="nav-link">Logout</button>
                         </form>
-
                     @endauth
                 </div>
             </div>
@@ -40,9 +43,6 @@
                     <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                @auth()
-                <a href="{{route('blog.profile')}}" class="btn btn-outline-info">Profile</a>
-                @endauth
             </div>
 
 
