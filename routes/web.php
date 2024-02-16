@@ -25,6 +25,7 @@ Route::put('/publication/{post}/modify', [BlogController::class, 'update'])->mid
 
 Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
 
+
 Route::get('/register',[AuthController::class, 'showRegister'])->name('auth.register')->middleware('guest');
 Route::post('/register',[AuthController::class, 'register']);
 
