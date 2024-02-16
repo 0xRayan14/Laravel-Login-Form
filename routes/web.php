@@ -33,3 +33,5 @@ Route::post('/login',[AuthController::class, 'login']);
 
 Route::delete('/', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
 
+Route::get('/profile',[BlogController::class, 'profile'])->name('blog.profile')->middleware('auth');
+Route::post('/profile',[BlogController::class, 'profile']);

@@ -76,7 +76,6 @@ class BlogController extends Controller
 
     public function search(Request $request)
     {
-        // Validate the search query
         $request->validate([
             'query' => 'required|string',
         ]);
@@ -90,6 +89,12 @@ class BlogController extends Controller
             ->paginate(10);
 
         return view('blog.search', compact('posts', 'query'));
+    }
+
+    public function profile(Post $post)
+    {
+        return view('blog.profile');
+
     }
 
 
