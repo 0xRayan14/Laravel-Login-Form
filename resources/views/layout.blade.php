@@ -25,11 +25,15 @@
 
                     @auth()
                         <div class="d-flex align-items-center">
-                            <a href="{{ route('blog.profile') }}">
-                                <img src="{{ asset('images/' . Auth::user()->image) }}" alt="Profile Picture" class="rounded-circle me-2" style="width: 32px; height: 32px;">
-                            </a>
+                            <div class="d-flex align-items-center">
+                                <a href="{{ route('blog.profile') }}">
+                                    <img src="{{ asset('images/' . Auth::user()->image) }}" alt="Profile Picture" class="rounded-circle me-2" style="width: 32px; height: 32px;">
+                                </a>
+                            </div>
+                            <!-- Profile link -->
                         </div>
 
+                        <!-- Logout form -->
                         <form action="{{ route('auth.logout') }}" method="post">
                             @csrf
                             @method('delete')
@@ -37,7 +41,10 @@
                         </form>
                     @endauth
                 </div>
+
             </div>
+            <a href="{{ route('blog.profile') }}" class="btn btn-outline-info me-2">Profile</a>
+
             <div class="flex justify-between">
                 <form action="{{route('blog.search')}}" method="get" class="d-flex" role="search">
                     <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
