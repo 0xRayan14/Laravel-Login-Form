@@ -45,7 +45,9 @@
                 </div>
 
             </div>
+            @auth()
             <a href="{{ route('blog.profile') }}" class="btn btn-outline-info me-2">Profile</a>
+            @endauth
 
             <div class="flex justify-between">
                 <form action="{{route('blog.search')}}" method="get" class="d-flex" role="search">

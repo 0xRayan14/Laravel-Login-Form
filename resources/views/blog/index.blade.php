@@ -13,6 +13,7 @@
                     </div>
                     <div class="card-body">
                         <h1>{{$post->title}}</h1>                           <p>Posted the {{$post->created_at}}</p>
+                        <p>Last update : {{$post->updated_at}}</p>
                         <h4>{{$post->content}}</h4>
                         <img class="img-thumbnail img-fluid" src="/storage/{{$post->image}}" alt="{{$post->title}}">
                     </div>
