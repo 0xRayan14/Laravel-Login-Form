@@ -114,7 +114,7 @@ class BlogController extends Controller
             $user->lastname = $request->input('lastname');
             $user->save();
 
-            return redirect()->back()->with('success', 'Profile updated successfully.');
+            return redirect()->route('blog.index')->with('ok', 'Profile updated');
         } else {
             return redirect()->back()->with('error', 'Failed to update profile. Please try again.');
         }
