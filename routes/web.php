@@ -25,11 +25,11 @@ Route::put('/publication/{post}/modify', [BlogController::class, 'update'])->mid
 
 Route::get('/blog/search', [BlogController::class, 'search'])->name('blog.search');
 
-Route::get('/inscription',[AuthController::class, 'showRegister'])->name('auth.register')->middleware('guest');
-Route::post('/inscription',[AuthController::class, 'register']);
+Route::get('/register',[AuthController::class, 'showRegister'])->name('auth.register')->middleware('guest');
+Route::post('/register',[AuthController::class, 'register']);
 
-Route::get('/connexion',[AuthController::class, 'showLogin'])->name('auth.login')->middleware('guest');
-Route::post('/connexion',[AuthController::class, 'login']);
+Route::get('/login',[AuthController::class, 'showLogin'])->name('auth.login')->middleware('guest');
+Route::post('/login',[AuthController::class, 'login']);
 
 Route::delete('/', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
 
